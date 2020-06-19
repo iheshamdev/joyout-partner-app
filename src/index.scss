@@ -1,0 +1,35 @@
+/* Global styles */
+// Created css vars to share it easily
+:root {
+  --pColor: #f15d5c;
+  --sColor: #0052cc;
+  --txtColor: #535353;
+  --borderColor: #c8c9ce;
+  --cardShadow: 1px 2px 16px rgba(0, 0, 0, 0.08);
+  /* Fonts */
+  --light: 300;
+  --normal: 400;
+  --bold: 700;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: 0;
+  max-width: 100%;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+body {
+  background-color: #f7f8f9;
+  color: var(--txtColor);
+  font-weight: var(--normal);
+}
+
+h1,
+h2,
+h3 {
+  color: black;
+}
