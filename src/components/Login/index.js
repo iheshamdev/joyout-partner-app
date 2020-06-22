@@ -1,8 +1,11 @@
 import './style.scss';
 import React, { useState, useEffect } from 'react';
 import FormField from '../shared/FormField';
+import { useDispatch, connect } from 'react-redux';
+import { LOG_IN } from '../../store/slices/auth';
+import { useHistory } from 'react-router-dom';
 
-const Login = () => {
+const Login = props => {
   const [username, setUsername] = useState({
     name: 'username',
     required: true,
@@ -10,7 +13,7 @@ const Login = () => {
     type: 'text',
     label: 'Username',
     placeholder: 'John doe',
-    value: '',
+    value: 'test2',
     errMsg: 'At least 2 Chars',
   });
   const [password, setPassword] = useState({
@@ -20,15 +23,24 @@ const Login = () => {
     type: 'password',
     label: 'Password',
     placeholder: 'Type your password',
-    value: '',
+    value: '12345678',
     errMsg: 'At least 6 Chars',
   });
   const [btnActive, setBtnActive] = useState(false);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const user = props.user;
 
   const handleSubmit = e => {
     e.preventDefault();
     if (e.target.checkValidity()) {
-      alert('Form Submitted');
+      // alert('Form Submitted');
+      let data = {
+        strategy: 'local',
+        username: username.value,
+        password: password.value,
+      };
+      dispatch(LOG_IN(data));
     }
   };
 
@@ -42,6 +54,10 @@ const Login = () => {
       setBtnActive(false);
     }
   }, [username.value, username.regExp, password.value, password.regExp]);
+
+  useEffect(() => {
+    if (Object.keys(user).length !== 0) history.push('/home');
+  }, [user]);
 
   return (
     <form noValidate onSubmit={handleSubmit}>
@@ -75,12 +91,25 @@ const Login = () => {
         />
       </div>
       <div className="formActions flex justify-center">
-        <button type="submit" className="btn mainBtn" disabled={!btnActive}>
-          Submit
-        </button>
+        {!props.formLoading ? (
+          <button type="submit" className="btn mainBtn" disabled={!btnActive}>
+            Submit
+          </button>
+        ) : (
+          <button type="button" className="btn" disabled>
+            Checking...
+          </button>
+        )}
       </div>
     </form>
   );
 };
 
-export default Login;
+const mapStateToProps = state => {
+  return {
+    formLoading: state.auth.loading,
+    user: state.auth.data,
+  };
+};
+
+export default connect(mapStateToProps)(Login);
