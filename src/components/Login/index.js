@@ -17,7 +17,7 @@ const Login = () => {
     name: 'password',
     required: true,
     regExp: '.{6,}',
-    type: 'text',
+    type: 'password',
     label: 'Password',
     placeholder: 'Type your password',
     value: '',
