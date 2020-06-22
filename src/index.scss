@@ -78,12 +78,15 @@ h3 {
   font-weight: var(--bold);
   transition: 0.13s ease-out;
   &.mainBtn {
-    background-color: var(--sColor);
-    box-shadow: 0px 4px 4px rgba(0, 82, 204, 0.2);
+    background-image: linear-gradient(to top, #0052cc 0%, #186ce8 100%);
+    box-shadow: 0px 3px 3px rgba(0, 82, 204, 0.2);
   }
   &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
+    cursor: default;
+    background-image: none;
+    box-shadow: none;
+    background-color: #dcdcdc;
+    color: rgba(0, 0, 0, 0.26);
   }
   &:active {
     box-shadow: none;
