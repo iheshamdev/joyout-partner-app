@@ -12,6 +12,7 @@ const slice = createSlice({
     userLoggedIn: (auth, action) => {
       auth.data = action.payload;
       auth.loading = false;
+      localStorage.setItem('accessToken', action.payload.accessToken);
     },
   },
 });

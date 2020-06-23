@@ -4,6 +4,7 @@ import FormField from '../shared/FormField';
 import { useDispatch, connect } from 'react-redux';
 import { LOG_IN } from '../../store/slices/auth';
 import { useHistory } from 'react-router-dom';
+import isUserLoggedIn from '../../helper/isLoggedIn';
 
 const Login = props => {
   const [username, setUsername] = useState({
@@ -31,6 +32,8 @@ const Login = props => {
   const history = useHistory();
   const user = props.user;
 
+  if (isUserLoggedIn) history.push('/');
+
   const handleSubmit = e => {
     e.preventDefault();
     if (e.target.checkValidity()) {
@@ -56,8 +59,8 @@ const Login = props => {
   }, [username.value, username.regExp, password.value, password.regExp]);
 
   useEffect(() => {
-    if (Object.keys(user).length !== 0) history.push('/home');
-  }, [user]);
+    if (Object.keys(user).length !== 0) history.push('/');
+  }, [history, user]);
 
   return (
     <form noValidate onSubmit={handleSubmit}>

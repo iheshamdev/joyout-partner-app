@@ -1,31 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './style.scss';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import * as NavIcons from './NavIcons';
 
-const NavBar = () => {
-  return (
-    <div className="navBar">
-      <div className="mainContainer flex align-center justify-between">
-        <NavLink exact to="/" activeClassName="active">
-          <NavIcons.Home />
-          Home
-        </NavLink>
-        <NavLink to="/booking" activeClassName="active">
-          <NavIcons.Booking />
-          Booking
-        </NavLink>
-        <NavLink to="/offers" activeClassName="active">
-          <NavIcons.Offers />
-          Offers
-        </NavLink>
-        <NavLink to="/More" activeClassName="active">
-          <NavIcons.More />
-          More
-        </NavLink>
-      </div>
-    </div>
+const NavBar = props => {
+  const history = useHistory();
+  const [hideNavBar, setHideNavBar] = useState(
+    history.location.pathname.includes('login')
   );
+
+  history.listen((location, action) => {
+    setHideNavBar(location.pathname.includes('login'));
+  });
+
+  if (hideNavBar) {
+    return '';
+  } else {
+    return (
+      <div className="navBar">
+        <div className="mainContainer flex align-center justify-between">
+          <NavLink exact to="/">
+            <NavIcons.Home />
+            Home
+          </NavLink>
+          <NavLink to="/booking">
+            <NavIcons.Booking />
+            Booking
+          </NavLink>
+          <NavLink to="/offers">
+            <NavIcons.Offers />
+            Offers
+          </NavLink>
+          <NavLink to="/More">
+            <NavIcons.More />
+            More
+          </NavLink>
+        </div>
+      </div>
+    );
+  }
 };
 
 export default NavBar;

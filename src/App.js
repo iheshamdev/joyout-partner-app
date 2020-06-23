@@ -1,24 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Login from './components/Login';
 import NavBar from './components/NavBar';
-import { Switch, Route } from 'react-router';
+import { Switch, Route, useHistory, Redirect } from 'react-router-dom';
 import Offers from './components/Offers';
 import Booking from './components/Booking';
 import Home from './components/Home';
+import isUserLoggedIn from './helper/isLoggedIn';
 
-function App() {
+const App = props => {
+  const history = useHistory();
+
+  // Redirect to /login
+  if (!isUserLoggedIn) history.push('/login');
+
   return (
     <div className="App">
-      <NavBar />
-
       <Switch>
         <Route path="/offers" component={Offers} />
         <Route path="/booking" component={Booking} />
-        <Route path="/" component={Home} />
+        <Route path="/login" component={Login} />
+        <Route path="/" exact component={Home} />
+        <Redirect to="/" />
       </Switch>
-      {/* <Login /> */}
+      <NavBar />
     </div>
   );
-}
+};
 
 export default App;
