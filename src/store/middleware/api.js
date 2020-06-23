@@ -28,7 +28,9 @@ const api = ({ dispatch }) => next => async action => {
         payload: response.data,
       });
   } catch (error) {
-    if (onError) dispatch({ type: onError, payload: error.message });
+    // Unauthorized
+    if (error.response.status === 401)
+      if (onError) dispatch({ type: onError, payload: error.message });
   }
 };
 

@@ -10,15 +10,15 @@ const Stats = () => {
 
   useEffect(() => {
     dispatch(LOAD_STATS());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="stats">
       <h4>Stats</h4>
-      <div className="statsCard">
-        {stat.loading ? (
-          'loading...'
-        ) : (
+      {stat.loading ? (
+        'loading...'
+      ) : (
+        <div className="statsCard">
           <ul>
             <li>
               <div className="statsType">Today</div>
@@ -43,8 +43,8 @@ const Stats = () => {
               </div>
             </li>
           </ul>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

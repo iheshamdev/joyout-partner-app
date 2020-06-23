@@ -9,9 +9,7 @@ const TodayBooking = () => {
 
   useEffect(() => {
     dispatch(LOAD_RESERVATIONS());
-  }, []);
-
-  console.log(reservations);
+  }, [dispatch]);
 
   return (
     <div className="todayBooking">
