@@ -1,7 +1,16 @@
 import React from 'react';
+import './style.scss';
+import Stats from './Stats';
 
 const Home = () => {
-  return <h1>Home</h1>;
+  return (
+    <section id="home">
+      <h1 className="pageTitle">Home</h1>
+      <div className="mainContainer">
+        <Stats />
+      </div>
+    </section>
+  );
 };
 
 export default Home;

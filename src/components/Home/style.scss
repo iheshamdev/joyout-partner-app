@@ -1,0 +1,30 @@
+h4 {
+  margin-bottom: 10px;
+  //   font-size: 18px;
+  //   font-weight: normal;
+}
+.stats {
+  .statsCard {
+    box-shadow: var(--cardShadow);
+    padding: 8px 0;
+    border-radius: 10px;
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      > div {
+        flex: 1;
+        display: flex;
+        align-items: center;
+      }
+      img {
+        margin-right: 6px;
+      }
+      .statsType {
+        color: var(--pColor);
+        font-size: 19px;
+      }
+    }
+  }
+}

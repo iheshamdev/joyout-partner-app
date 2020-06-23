@@ -4,7 +4,7 @@ import FormField from '../shared/FormField';
 import { useDispatch, connect } from 'react-redux';
 import { LOG_IN } from '../../store/slices/auth';
 import { useHistory } from 'react-router-dom';
-import isUserLoggedIn from '../../helper/isLoggedIn';
+import getAccessToken from '../../helper/getAccessToken';
 
 const Login = props => {
   const [username, setUsername] = useState({
@@ -32,7 +32,7 @@ const Login = props => {
   const history = useHistory();
   const user = props.user;
 
-  if (isUserLoggedIn) history.push('/');
+  if (getAccessToken() !== false) history.push('/');
 
   const handleSubmit = e => {
     e.preventDefault();

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { createAction } from '@reduxjs/toolkit';
 import { BASE_API_URL } from '../../constants';
+import getAccessToken from '../../helper/getAccessToken';
 
 export const apiCallBegan = createAction('api/callBegan');
 export const apiCallSuccess = createAction('api/callSuccess');
@@ -19,8 +20,8 @@ const api = ({ dispatch }) => next => async action => {
       url,
       method,
       data,
+      headers: { Authorization: `Bearer ${getAccessToken()}` },
     });
-    console.log(response);
     if (onSuccess)
       dispatch({
         type: onSuccess,
