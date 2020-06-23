@@ -1,6 +1,7 @@
 import React from 'react';
 import './style.scss';
 import Stats from './Stats';
+import TodayBooking from './TodayBooking';
 
 const Home = () => {
   return (
@@ -8,6 +9,7 @@ const Home = () => {
       <h1 className="pageTitle">Home</h1>
       <div className="mainContainer">
         <Stats />
+        <TodayBooking />
       </div>
     </section>
   );

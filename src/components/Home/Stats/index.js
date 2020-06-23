@@ -7,7 +7,6 @@ import { LOAD_STATS } from '../../../store/slices/stat';
 const Stats = () => {
   const dispatch = useDispatch();
   const stat = useSelector(state => state.stat);
-  console.log(stat);
 
   useEffect(() => {
     dispatch(LOAD_STATS());
