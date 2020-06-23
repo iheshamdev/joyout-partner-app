@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { LOAD_RESERVATIONS } from '../../store/slices/reservations';
 import ReservationCard from '../shared/ReservationCard';
-// import './style.scss';
 
 const Booking = () => {
   const dispatch = useDispatch();

@@ -14,17 +14,17 @@ const Login = props => {
     type: 'text',
     label: 'Username',
     placeholder: 'John doe',
-    value: 'test2',
+    value: '',
     errMsg: 'At least 2 Chars',
   });
   const [password, setPassword] = useState({
     name: 'password',
     required: true,
-    regExp: '.{6,}',
+    regExp: '.{8,}',
     type: 'password',
     label: 'Password',
     placeholder: 'Type your password',
-    value: '12345678',
+    value: '',
     errMsg: 'At least 6 Chars',
   });
   const [btnActive, setBtnActive] = useState(false);
