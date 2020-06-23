@@ -34,6 +34,30 @@ h3 {
   color: black;
 }
 
+a {
+  text-decoration: none;
+  display: inline-block;
+  color: var(--txtColor);
+}
+ul {
+  list-style-type: none;
+}
+
+// main-container
+.mainContainer {
+  max-width: 800px;
+  width: 100%;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.pageTitle {
+  padding: 30px 0;
+  font-size: 28px;
+  color: #000;
+  font-weight: 500;
+}
+
 .flex {
   display: flex;
   &.flex-wrap {
