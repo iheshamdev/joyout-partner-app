@@ -2,13 +2,14 @@ import React, { useEffect } from 'react';
 import ReservationCard from '../../shared/ReservationCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { LOAD_RESERVATIONS } from '../../../store/slices/reservations';
+import formatedDate from '../../../helper/formatedDate';
 
 const TodayBooking = () => {
   const dispatch = useDispatch();
   const reservations = useSelector(state => state.reservations);
 
   useEffect(() => {
-    dispatch(LOAD_RESERVATIONS({ status: 'confirmed' }));
+    dispatch(LOAD_RESERVATIONS({ status: 'confirmed', date: formatedDate() }));
   }, [dispatch]);
 
   return (

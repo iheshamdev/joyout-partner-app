@@ -22,8 +22,8 @@ const Stats = () => {
           <ul>
             <li>
               <div className="statsType">Today</div>
-              <div className="bookings">
-                <img src={reservationIcon} alt="Booking icon" />
+              <div className="reservations">
+                <img src={reservationIcon} alt="Reservation icon" />
                 {stat.data.todayReservations | 0}
               </div>
               <div className="users">
@@ -33,8 +33,8 @@ const Stats = () => {
             </li>
             <li>
               <div className="statsType">Total</div>
-              <div className="bookings">
-                <img src={reservationIcon} alt="Booking icon" />
+              <div className="reservations">
+                <img src={reservationIcon} alt="Reservation icon" />
                 {stat.data.totalReservations | 0}
               </div>
               <div className="users">

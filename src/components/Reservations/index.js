@@ -1,20 +1,28 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { LOAD_RESERVATIONS } from '../../store/slices/reservations';
 import ReservationCard from '../shared/ReservationCard';
+import DatePicker from 'react-datepicker';
 
-const Booking = () => {
+import 'react-datepicker/dist/react-datepicker.css';
+import formatedDate from '../../helper/formatedDate';
+
+const Reservations = () => {
   const dispatch = useDispatch();
+  const [date, setDate] = useState(new Date());
   const reservations = useSelector(state => state.reservations);
 
   useEffect(() => {
-    dispatch(LOAD_RESERVATIONS());
-  }, [dispatch]);
+    dispatch(
+      LOAD_RESERVATIONS({ status: 'confirmed', date: formatedDate(date) })
+    );
+  }, [date, dispatch]);
 
   return (
-    <section id="booking">
+    <section id="reservations">
       <h1 className="pageTitle">Reservations</h1>
       <div className="mainContainer">
+        <DatePicker selected={date} onChange={date => setDate(date)} />
         {reservations.list.length > 0 ? (
           reservations.list.map(itm => (
             <ReservationCard data={itm} key={itm.id} />
@@ -27,4 +35,4 @@ const Booking = () => {
   );
 };
 
-export default Booking;
+export default Reservations;
