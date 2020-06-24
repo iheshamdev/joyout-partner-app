@@ -10,7 +10,15 @@ export const apiCallFailed = createAction('api/callFailed');
 const api = ({ dispatch }) => next => async action => {
   if (action.type !== apiCallBegan.type) return next(action);
 
-  const { url, method, data, onStart, onSuccess, onError } = action.payload;
+  const {
+    url,
+    method,
+    data,
+    params,
+    onStart,
+    onSuccess,
+    onError,
+  } = action.payload;
 
   if (onStart) dispatch({ type: onStart });
   next(action);
@@ -20,15 +28,18 @@ const api = ({ dispatch }) => next => async action => {
       url,
       method,
       data,
+      params,
       headers: { Authorization: `Bearer ${getAccessToken()}` },
     });
+    // console.log(response);
     if (onSuccess)
       dispatch({
         type: onSuccess,
-        payload: response.data,
+        payload: method === 'patch' ? response.config.url : response.data,
       });
   } catch (error) {
     // Unauthorized
+    // console.log(error.response);
     if (error.response.status === 401)
       if (onError) dispatch({ type: onError, payload: error.message });
   }

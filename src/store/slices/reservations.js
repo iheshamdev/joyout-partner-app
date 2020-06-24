@@ -6,23 +6,42 @@ const slice = createSlice({
   name: 'reservations',
   initialState: { list: [], loading: false },
   reducers: {
-    reservationsRequested: (stat, action) => {
-      stat.loading = true;
+    reservationsRequested: (reservations, action) => {
+      reservations.loading = true;
     },
-    reservationsReceived: (stat, action) => {
-      stat.list = action.payload;
-      stat.loading = false;
+    reservationsReceived: (reservations, action) => {
+      reservations.list = action.payload;
+      reservations.loading = false;
+    },
+    reservationStatusChanged: (reservations, action) => {
+      let id = action.payload.replace('/reservations/', '');
+      const index = reservations.list.findIndex(todo => todo.id === id);
+      reservations.list.splice(index, 1);
     },
   },
 });
 
-export const { reservationsRequested, reservationsReceived } = slice.actions;
+export const {
+  reservationsRequested,
+  reservationsReceived,
+  reservationStatusChanged,
+} = slice.actions;
 export default slice.reducer;
 
-export const LOAD_RESERVATIONS = () =>
+export const LOAD_RESERVATIONS = params =>
   apiCallBegan({
     url: RESERVATIONS_URL,
+    params,
     onStart: reservationsRequested.type,
     onSuccess: reservationsReceived.type,
+    onError: apiCallFailed.type,
+  });
+
+export const CHANGE_RESERVATION_STATUS = (id, newStatus) =>
+  apiCallBegan({
+    url: `${RESERVATIONS_URL}/${id}`,
+    method: 'patch',
+    data: { status: newStatus },
+    onSuccess: reservationStatusChanged.type,
     onError: apiCallFailed.type,
   });

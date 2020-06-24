@@ -8,7 +8,7 @@ const TodayBooking = () => {
   const reservations = useSelector(state => state.reservations);
 
   useEffect(() => {
-    dispatch(LOAD_RESERVATIONS());
+    dispatch(LOAD_RESERVATIONS({ status: 'confirmed' }));
   }, [dispatch]);
 
   return (

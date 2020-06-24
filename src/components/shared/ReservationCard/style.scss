@@ -13,9 +13,11 @@
     position: absolute;
     top: 20px;
     right: 20px;
-    img:first-of-type {
-      margin-right: 14px;
+    img {
       cursor: pointer;
+      &:first-of-type {
+        margin-right: 14px;
+      }
     }
   }
   .users {
