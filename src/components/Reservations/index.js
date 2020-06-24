@@ -13,7 +13,7 @@ const Booking = () => {
 
   return (
     <section id="booking">
-      <h1 className="pageTitle">Booking</h1>
+      <h1 className="pageTitle">Reservations</h1>
       <div className="mainContainer">
         {reservations.list.length > 0 ? (
           reservations.list.map(itm => (

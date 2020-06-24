@@ -23,7 +23,7 @@ export const Home = () => {
   );
 };
 
-export const Booking = () => {
+export const Reservations = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

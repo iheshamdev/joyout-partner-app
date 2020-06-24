@@ -23,9 +23,9 @@ const NavBar = props => {
             <NavIcons.Home />
             Home
           </NavLink>
-          <NavLink to="/booking">
-            <NavIcons.Booking />
-            Booking
+          <NavLink to="/reservations">
+            <NavIcons.Reservations />
+            Reservations
           </NavLink>
           <NavLink to="/offers">
             <NavIcons.Offers />

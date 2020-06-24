@@ -3,7 +3,7 @@ import Login from './components/Login';
 import NavBar from './components/NavBar';
 import { Switch, Route, useHistory, Redirect } from 'react-router-dom';
 import Offers from './components/Offers';
-import Booking from './components/Booking';
+import Reservations from './components/Reservations';
 import Home from './components/Home';
 import getAccessToken from './helper/getAccessToken';
 
@@ -17,7 +17,7 @@ const App = props => {
     <div className="App">
       <Switch>
         <Route path="/offers" component={Offers} />
-        <Route path="/booking" component={Booking} />
+        <Route path="/reservations" component={Reservations} />
         <Route path="/login" component={Login} />
         <Route path="/" exact component={Home} />
         <Redirect to="/" />
