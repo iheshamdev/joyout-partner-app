@@ -4,9 +4,19 @@
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
+  position: relative;
   .reservation_card--name {
     font-size: 19px;
     margin-bottom: 20px;
+  }
+  .reservation_card--actions {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    img:first-of-type {
+      margin-right: 14px;
+      cursor: pointer;
+    }
   }
   .users {
     margin-right: 20px;
