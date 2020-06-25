@@ -25,13 +25,15 @@ const Reservations = () => {
       </header>
       <div className="mainContainer">
         <DatePicker selected={date} onChange={date => setDate(date)} />
-        {reservations.list.length > 0 ? (
+        {reservations.loading && <p>Loading...</p>}
+        {!reservations.loading && reservations.list.length === 0 && (
+          <p>No Reservations for this day! pick another day</p>
+        )}
+        {!reservations.loading &&
+          reservations.list.length > 0 &&
           reservations.list.map(itm => (
             <ReservationCard data={itm} key={itm.id} />
-          ))
-        ) : (
-          <p>Loading...</p>
-        )}
+          ))}
       </div>
     </section>
   );
