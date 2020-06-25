@@ -20,7 +20,9 @@ const Reservations = () => {
 
   return (
     <section id="reservations">
-      <h1 className="pageTitle">Reservations</h1>
+      <header>
+        <h1 className="pageTitle">Reservations</h1>
+      </header>
       <div className="mainContainer">
         <DatePicker selected={date} onChange={date => setDate(date)} />
         {reservations.list.length > 0 ? (

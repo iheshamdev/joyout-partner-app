@@ -6,7 +6,9 @@ import TodayBooking from './TodayBooking';
 const Home = () => {
   return (
     <section id="home">
-      <h1 className="pageTitle">Home</h1>
+      <header>
+        <h1 className="pageTitle">Home</h1>
+      </header>
       <div className="mainContainer">
         <Stats />
         <TodayBooking />

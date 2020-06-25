@@ -25,22 +25,24 @@ const ReservationCard = props => {
         </div>
         <div className="date">{props.data.timeslot.nameEn}</div>
       </div>
-      <div className="reservation_card--actions flex flex-center">
-        <img
-          src={xIcon}
-          alt="x icon"
-          onClick={() =>
-            dispatch(CHANGE_RESERVATION_STATUS(props.data.id, 'no_show_up'))
-          }
-        />
-        <img
-          src={checkIcon}
-          alt="Check icon"
-          onClick={() =>
-            dispatch(CHANGE_RESERVATION_STATUS(props.data.id, 'attended'))
-          }
-        />
-      </div>
+      {props.showBtns && (
+        <div className="reservation_card--actions flex flex-center">
+          <img
+            src={xIcon}
+            alt="x icon"
+            onClick={() =>
+              dispatch(CHANGE_RESERVATION_STATUS(props.data.id, 'no_show_up'))
+            }
+          />
+          <img
+            src={checkIcon}
+            alt="Check icon"
+            onClick={() =>
+              dispatch(CHANGE_RESERVATION_STATUS(props.data.id, 'attended'))
+            }
+          />
+        </div>
+      )}
     </div>
   );
 };

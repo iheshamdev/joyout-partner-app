@@ -21,8 +21,6 @@ const api = ({ dispatch }) => next => async action => {
   } = action.payload;
 
   if (onStart) dispatch({ type: onStart });
-  // next(action);
-
   try {
     const response = await axios.request({
       baseURL: BASE_API_URL,
