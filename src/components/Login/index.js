@@ -63,7 +63,7 @@ const Login = props => {
   }, [history, user]);
 
   return (
-    <form noValidate onSubmit={handleSubmit}>
+    <form className="login-form" noValidate onSubmit={handleSubmit}>
       <h1>Login</h1>
       <div className="formBody">
         <FormField

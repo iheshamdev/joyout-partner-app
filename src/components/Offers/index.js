@@ -3,11 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { LOAD_OFFERS } from '../../store/slices/offers';
 import OfferCard from './OfferCard';
 import { statusChanged } from '../../store/slices/offers';
+import { Link } from 'react-router-dom';
 
 const Offers = () => {
   const dispatch = useDispatch();
-  const offers = useSelector(state => state.offers.data);
-  const status = useSelector(state => state.offers.status);
+  const [offers, status] = useSelector(state => [
+    state.offers.data,
+    state.offers.status,
+  ]);
 
   useEffect(() => {
     dispatch(LOAD_OFFERS({}));
@@ -15,8 +18,11 @@ const Offers = () => {
 
   return (
     <section id="offers">
-      <header>
+      <header className="flex justify-between align-center">
         <h1 className="pageTitle">Offers</h1>
+        <Link to="/offers/add">
+          <button className="btn basic-btn">Add</button>
+        </Link>
       </header>
       <div className="mainContainer">
         <div className="tabs flex align-center">

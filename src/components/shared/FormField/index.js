@@ -21,14 +21,15 @@ const FormField = props => {
 
   return (
     <div className="formGroup">
-      <label>{label}</label>
+      <label className="mainLabel">{label}</label>
       <div className={!valid ? 'formField invalid' : 'formField'}>
         <input
+          id={name}
           name={name}
-          required={required}
-          type={type}
-          placeholder={placeholder}
-          pattern={regExp}
+          required={required ? true : false}
+          type={type ? type : 'text'}
+          placeholder={placeholder ? placeholder : ''}
+          pattern={regExp ? regExp : ''}
           value={value}
           onChange={handleChange}
           onBlur={onBlur}

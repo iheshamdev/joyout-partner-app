@@ -1,19 +1,13 @@
 .formGroup {
   position: relative;
   margin-bottom: 30px;
-  label {
-    font-size: 15px;
-    font-weight: 600;
-    display: block;
-    margin-bottom: 8px;
-  }
   .formField {
-    height: 44px;
+    height: 52px;
     width: 100%;
     position: relative;
     z-index: 2;
     display: flex;
-    border-radius: 5px 5px 0 0;
+    border-radius: 4px 4px 0 0;
     overflow: hidden;
     align-items: center;
     &.invalid .fieldUnderline {
@@ -37,6 +31,9 @@
       padding: 0 14px;
       transition: 0.2s cubic-bezier(0.19, 1, 0.22, 1);
       font-size: 16px;
+      // &[type='file'] {
+      //   display: none;
+      // }
       &::placeholder {
         font-size: 14px;
       }

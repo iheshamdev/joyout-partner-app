@@ -6,6 +6,7 @@ import Offers from './components/Offers';
 import Reservations from './components/Reservations';
 import Home from './components/Home';
 import getAccessToken from './helper/getAccessToken';
+import AddOffer from './components/Offers/AddOffer';
 
 const App = props => {
   const history = useHistory();
@@ -16,6 +17,7 @@ const App = props => {
   return (
     <div className="App">
       <Switch>
+        <Route path="/offers/add" component={AddOffer} />
         <Route path="/offers" component={Offers} />
         <Route path="/reservations" component={Reservations} />
         <Route path="/login" component={Login} />
