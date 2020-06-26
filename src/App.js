@@ -1,26 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Login from './components/Login';
+import NavBar from './components/NavBar';
+import { Switch, Route, useHistory, Redirect } from 'react-router-dom';
+import Offers from './components/Offers';
+import Reservations from './components/Reservations';
+import Home from './components/Home';
+import getAccessToken from './helper/getAccessToken';
+import AddOffer from './components/Offers/AddOffer';
 
-function App() {
+const App = props => {
+  const history = useHistory();
+
+  // Redirect to /login
+  if (getAccessToken() === false) history.push('/login');
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Switch>
+        <Route path="/offers/add" component={AddOffer} />
+        <Route path="/offers" component={Offers} />
+        <Route path="/reservations" component={Reservations} />
+        <Route path="/login" component={Login} />
+        <Route path="/" exact component={Home} />
+        <Redirect to="/" />
+      </Switch>
+      <NavBar />
     </div>
   );
-}
+};
 
 export default App;

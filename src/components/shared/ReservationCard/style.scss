@@ -1,0 +1,29 @@
+.reservation_card {
+  background-color: #fff;
+  box-shadow: var(--cardShadow);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  position: relative;
+  .reservation_card--name {
+    font-size: 19px;
+    margin-bottom: 20px;
+  }
+  .reservation_card--actions {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    img {
+      cursor: pointer;
+      &:first-of-type {
+        margin-right: 14px;
+      }
+    }
+  }
+  .users {
+    margin-right: 20px;
+  }
+  .date {
+    color: #9d9d9d;
+  }
+}
